@@ -1,0 +1,27 @@
+# Xcode & SPM Build Artifacts
+.build/
+build/
+DerivedData/
+
+# Xcode User State & Workspace Checks
+*.xcuserdata
+*.xcuserstate
+xcuserdata/
+
+# AppKit / macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor & Environment files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Local user configurations
+*.local
