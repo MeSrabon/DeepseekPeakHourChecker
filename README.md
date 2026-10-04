@@ -1,8 +1,9 @@
 # DeepSeek Peak Hour Checker
 
-A lightweight, native macOS menu-bar utility that continuously monitors DeepSeek's pricing schedule and indicates whether the service is currently in **Peak Hours** or **Off-Peak Hours**.
+A lightweight, native menu-bar / system-tray utility for **macOS** and **Windows** that continuously monitors DeepSeek's pricing schedule and indicates whether the service is currently in **Peak Hours** or **Off-Peak Hours** (with the uniform 50% discount).
 
-Lives entirely in the macOS menu bar (`LSUIElement = true`) with a native SwiftUI popover, real-time countdown, dynamic timezone conversion, Chinese statutory public holiday recognition, and transition notifications.
+- **macOS**: Native Swift & SwiftUI menu bar app (`LSUIElement = true`) with interactive popover, real-time countdown, timezone conversion, Chinese statutory public holiday engine, and notifications.
+- **Windows**: Pure native Win32 system tray application (standalone `.exe`, zero dependencies, x64 & ARM64) with dynamic tray icon, balloon notifications, and live status context menu.
 
 ---
 
@@ -151,8 +152,24 @@ Or copy it to your Applications folder:
 cp -R "build/DeepSeek Peak Hours.app" /Applications/
 ```
 
-### 5. Opening in Xcode
+### 5. Windows Build
+ 
+The Windows companion is written in pure Go utilizing native Win32 APIs with zero runtime dependencies. It can be compiled natively on Windows or cross-compiled directly from macOS or Linux:
 
+```bash
+# Build x64 (Intel/AMD)
+cd windows
+GOOS=windows GOARCH=amd64 go build -ldflags "-H=windowsgui -s -w" -o ../build/DeepSeekPeakHours-x64.exe .
+
+# Build ARM64 (Surface / Snapdragon X)
+GOOS=windows GOARCH=arm64 go build -ldflags "-H=windowsgui -s -w" -o ../build/DeepSeekPeakHours-arm64.exe .
+```
+
+To run on Windows:
+Just double click `DeepSeekPeakHours-x64.exe`. It will appear immediately in your system notification tray area with a whale icon and green/red status indicator dot.
+
+### 6. Opening in Xcode
+ 
 You can open the project in Xcode using either:
 
 ```bash
